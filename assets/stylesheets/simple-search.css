@@ -16,34 +16,45 @@ textarea {
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  width: 80%;
-  max-width: 1200px;
-  max-height: 70vh;
+  max-width: 80vw;
+  max-height: 80vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: top;
+  padding: 3vw;
   overflow: hidden;
 }
 
-
-.top-row-search {
+.left-container, .right-container {
+  flex: 1 1 45%;
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
-  padding: 40px;
-  color: #316872;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  gap: 2vw;
+}
+
+.top-row-search, .bottom-row-search {
+  display: flex;
+  gap: 2vw;
+  color: #316872;
+  align-items: top;
+  justify-content: left;
+  width: 100%;
 }
 
 .top-column1-search,
 .top-column2-search,
 .top-column3-search,
-.top-column4-search {
+.top-column4-search,
+.bottom-column1-search,
+.bottom-column2-search,
+.bottom-column3-search {
   flex: 1;
-  min-width: 200px;
+  min-width: 5vw;
 }
 
 .input-class {
@@ -150,12 +161,8 @@ input[type="text"] {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-}
-
-.bottom-column1-search {
-  margin-top: 18vh;
+  margin-top: 1vw;
+  padding: 1vw;
 }
 
 @media (max-width: 768px) {
@@ -165,32 +172,43 @@ input[type="text"] {
 
   .inner-container-search {
     width: 90%;
-    min-height: 70vh;
-    padding: 1rem;
+    min-height: 90vh;
+    padding: 1rem;  /* Reduced padding for smaller screens */
+    gap: 1rem;  /* Reduced gap between elements */
+    display: flex;
+    flex-direction: column; /* Stack left and right containers vertically on smaller screens */
   }
 
-  .top-row-search {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem;
+  .left-container, .right-container {
+    font-size: 0.8rem; /* Slightly increased font-size to make it readable */
+    flex: 1 1 auto;  /* Allow containers to adjust their size */
+    min-width: 100%;  /* Ensure they don’t overflow */
+    margin-bottom: 1rem; /* Space between the containers */
   }
 
   .input-class {
-    max-width: 100%;
+    width: 100%;  /* Ensures input elements are responsive */
+    box-sizing: border-box;  /* Includes padding and border in element's total width */
   }
 
   .box {
-    max-width: 100%;
+    width: 100%; /* Make checkboxes take full width on smaller screens */
+    box-sizing: border-box;
   }
 
   .checkbox-group {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Align items to the left */
   }
 
   .submit-button input[type="submit"] {
-    width: 80%;
-    max-width: 250px;
+    width: 100%; /* Full width for submit button */
+    max-width: 250px; /* Limit the width for larger screens */
+    margin: 0 auto; /* Center the button */
+  }
+
+  h4 {
+    font-size: 0.5rem;
+    color: #43909D;
   }
 }
