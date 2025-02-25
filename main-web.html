@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="assets/stylesheets/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
   <main>
     <div class="content-container">
       <!-- First Row -->
-      <div class="first-row">
+      <div class="first-row fade-in">
         <div class="text-column">
           <h1 class="dark-heading">Metabolite<br>Identification</h1>
           <p class="dark-p">Using Kegg, HMDB, LipidMaps, Metlin, NP Atlas, KNApSAck, MINE, and an in-house library,
@@ -35,58 +36,69 @@
       </div>
 
       <!-- Carousel (2nd row) -->
-      <div class="carousel-container">
+      <div class="carousel-container fade-in">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
 
             <!-- Slide 1 -->
             <div class="swiper-slide">
               <div class="card">
-                <img src="assets/images/Main-Image-1.jpg" alt="Image">
-                <h3>Simple Search</h3>
+                <a href="simple-search.html" class="remove-underline">
+                  <img src="assets/images/Main-Image-1.jpg" alt="Image">
+                  <h1 class="card-subtext">Simple Search</h1>
+                </a>
               </div>
             </div>
 
             <!-- Slide 2 -->
             <div class="swiper-slide">
               <div class="card">
-                <img src="assets/images/Main-Image-2.jpg" alt="Image">
-                <h3>Batch Search</h3>
+                <a href="batch-search.html" class="remove-underline">
+                  <img src="assets/images/Main-Image-3.jpg" alt="Image">
+                  <h1 class="card-subtext">Batch Search</h1>
+                </a>
               </div>
             </div>
 
             <!-- Slide 3 -->
             <div class="swiper-slide">
               <div class="card">
-                <img src="assets/images/Main-Image-4.jpg" alt="Image">
-                <h3>CE-MS Search</h3>
+                <a href="simple-search.html" class="remove-underline">
+                  <img src="assets/images/Main-Image-4.jpg" alt="Image">
+                  <h1 class="card-subtext">MS/MS Search</h1>
+                </a>
               </div>
             </div>
 
             <!-- Slide 4 -->
             <div class="swiper-slide">
               <div class="card">
-                <img src="assets/images/Main-Image-6.jpg" alt="Image">
-                <h3>CE-MS Search</h3>
+                <a href="simple-search.html" class="remove-underline">
+                  <img src="assets/images/Main-Image-6.jpg" alt="Image">
+                  <h1 class="card-subtext">CE-MS Search</h1>
+                </a>
               </div>
             </div>
 
             <!-- Slide 5 -->
             <div class="swiper-slide">
               <div class="card">
-                <img src="assets/images/Main-Image-3.jpg" alt="Image">
-                <h3>CE-MS Search</h3>
+                <a href="simple-search.html" class="remove-underline">
+                  <img src="assets/images/Main-Image-2.jpg" alt="Image">
+                  <h1 class="card-subtext">Oxidation</h1>
+                </a>
               </div>
             </div>
 
             <!-- Slide 6 -->
             <div class="swiper-slide">
               <div class="card">
-                <img src="assets/images/Main-Image-5.jpg" alt="Image">
-                <h3>CE-MS Search</h3>
+                <a href="simple-search.html" class="remove-underline">
+                  <img src="assets/images/Main-Image-5.jpg" alt="Image">
+                  <h1 class="card-subtext">Spectral Quality</h1>
+                </a>
               </div>
             </div>
-
           </div>
 
           <!-- Navigation Buttons -->
@@ -103,9 +115,9 @@
 
       <script>
         var swiper = new Swiper(".mySwiper", {
-          slidesPerView: 4,  /* Show 4 cards at a time */
-          spaceBetween: 20,  /* Space between cards */
-          loop: true,        /* Infinite loop */
+          slidesPerView: 4,
+          spaceBetween: 20,
+          loop: true,
           navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -122,6 +134,17 @@
           }
         });
       </script>
+    </div>
+
+    <div class="image-container fade-in">
+      <section class="full-width-section"><img src="assets/images/CEMBIO-BW.jpg" alt="image"></section>
+      <div class="overlay-text">
+        <h1>CE-MS Services</h1>
+        CE-MS services allows to search compounds using experimental information from Capillary Electrophoresis in
+        different set-ups (background electrolyte, polarity and ionization mode). It permits searches using the
+        effective mobility, the experimental relative migration time and the predicted absolute or relative migration
+        time.
+      </div>
     </div>
   </main>
 
@@ -147,6 +170,7 @@
 
     document.addEventListener("DOMContentLoaded", includeHTML);
   </script>
+
   <!-- jQuery and Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
