@@ -1,5 +1,5 @@
 {
-  "experimental_mass": "200",
+  "experimental_mass": "",
   "tolerance": "10",
   "tolerance_type": "ppm",
   "metabolites": "all-except-peptides",
@@ -7,8 +7,6 @@
   "ionization_mode": "neutral",
   "adducts": "all",
   "databases": [
-    "db1",
-    "db3",
-    "db5"
+    "db1"
   ]
 }

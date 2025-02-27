@@ -1,13 +1,16 @@
-// server.js
-
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
 
-// Serve static files (e.g., your HTML, CSS, and JS)
+// Middleware
+app.use(express.json()); // Allows JSON request bodies
+app.use(cors()); // Enables cross-origin requests
+
+// Serve static files (HTML, CSS, JS) from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Sample route for home
@@ -17,29 +20,33 @@ app.get('/', (req, res) => {
 
 // Route to fetch the form data (reading from local .json file for now)
 app.get('/api/get-form-data', (req, res) => {
-  fs.readFile('json/simple-search-data.json', 'utf8', (err, data) => {
+  const jsonFilePath = path.join(__dirname, 'json', 'simple-search-data.json'); // Ensure correct path
+
+  fs.readFile(jsonFilePath, 'utf8', (err, data) => {
     if (err) {
-      return res.status(500).send('Error reading form data');
+      console.error("Error reading JSON file:", err);
+      return res.status(500).json({ error: "Error reading form data" });
     }
-    res.json(JSON.parse(data)); // Respond with the data in the JSON file
+
+    try {
+      const jsonData = JSON.parse(data);
+      res.json(jsonData);
+    } catch (parseError) {
+      console.error("Error parsing JSON:", parseError);
+      res.status(500).json({ error: "Invalid JSON format" });
+    }
   });
 });
 
-// Route to handle form submission (POST request)
-app.post('/api/submit-form', (req, res) => {
-  const formData = req.body; // The data sent by the front-end
-
-  // Here, you can save the data or process it as needed.
-  console.log('Received form data:', formData);
-
-  // Simulating a response back to the front-end
-  res.json({
-    message: 'Form data received successfully',
-    formData
-  });
+// Mock endpoint to receive form submission
+app.post("/api/submit-form", (req, res) => {
+  console.log("Received form data:", req.body);
+  
+  // Simulate successful submission response
+  res.json({ message: "Form received successfully!", receivedData: req.body });
 });
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`✅ Server is running at http://localhost:${port}`);
 });
