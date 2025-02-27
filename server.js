@@ -2,6 +2,7 @@
 
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const port = 3000;
@@ -11,12 +12,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Sample route for home
 app.get('/', (req, res) => {
-  res.send('Home route hit');
+  res.send('This works!');
 });
 
 // Route to fetch the form data (reading from local .json file for now)
 app.get('/api/get-form-data', (req, res) => {
-  fs.readFile('form-data.json', 'utf8', (err, data) => {
+  fs.readFile('json/simple-search-data.json', 'utf8', (err, data) => {
     if (err) {
       return res.status(500).send('Error reading form data');
     }
